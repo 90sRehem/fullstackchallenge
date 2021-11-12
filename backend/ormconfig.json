@@ -1,0 +1,20 @@
+{
+  "type": "postgres",
+  "port": 5432,
+  "host": "localhost",
+  "username": "docker",
+  "password": "postgres",
+  "database": "fullstack_challenge_db",
+  "migrations": [
+    "./src/shared/infra/typeorm/migrations/*.ts"
+  ],
+  "seeds": [
+    "./src/sharedtypeorm/"
+  ],
+  "entities": [
+    "./src/modules/**/infra/**/entities/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/shared/infra/typeorm/migrations"
+  }
+}
