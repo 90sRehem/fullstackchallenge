@@ -4,7 +4,10 @@ import cors from 'cors';
 import 'express-async-errors';
 
 import { AppError } from '@utils/AppError';
-import routes from './routes';
+import { router } from './routes';
+
+import '@shared/container';
+import '@shared/infra/typeorm';
 
 export const app = express();
 
@@ -12,7 +15,11 @@ app.use(cors({ origin: '*' }));
 
 app.use(express.json());
 
-app.use(routes);
+app.use(router);
+
+app.get('/', (req, res) => {
+  res.send('Server Ok!');
+});
 
 app.use(
   (err: Error, _request: Request, response: Response, _next: NextFunction) => {
